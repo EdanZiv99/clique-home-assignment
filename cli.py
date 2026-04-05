@@ -9,16 +9,16 @@ from checkin_tool.recommender import get_candidates
 def positive_int(value: str) -> int:
     n = int(value)
     if n < 1:
-        raise argparse.ArgumentTypeError("--top-n must be at least 1.")
+        raise argparse.ArgumentTypeError("--top must be at least 1.")
     return n
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Identify members who need a check-in today.")
-    parser.add_argument("--members", required=True, help="Path to members.csv")
-    parser.add_argument("--contacts", required=True, help="Path to last_contacts.csv")
-    parser.add_argument("--holidays", required=True, help="Path to holidays.json")
-    parser.add_argument("--top-n", type=positive_int, default=10, help="Number of candidates to return (min 1)")
+    parser.add_argument("--members", default="data/members.csv", help="Path to members.csv")
+    parser.add_argument("--contacts", default="data/last_contacts.csv", help="Path to last_contacts.csv")
+    parser.add_argument("--holidays", default="data/holidays.json", help="Path to holidays.json")
+    parser.add_argument("--top", type=positive_int, default=10, help="Number of candidates to return (min 1)")
     parser.add_argument("--date", default=None, help="Override today's date (YYYY-MM-DD)")
     return parser.parse_args()
 
@@ -46,7 +46,7 @@ def main() -> None:
             members_path=args.members,
             contacts_path=args.contacts,
             holidays_path=args.holidays,
-            top_n=args.top_n,
+            top_n=args.top,
             today=today,
         )
 
