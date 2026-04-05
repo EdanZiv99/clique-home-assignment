@@ -27,6 +27,7 @@ checkin --top 5
 
 ### Run tests
 ```bash
+pip install -e ".[dev]"
 pytest -v
 ```
 
