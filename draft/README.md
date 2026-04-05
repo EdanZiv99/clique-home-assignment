@@ -35,6 +35,7 @@ pytest -v
 
 ## Assumptions
 
+- **Data file location:** By default, the tool expects data files in a `data/` directory relative to where the command is run. Custom paths can be provided via `--members`, `--contacts`, and `--holidays`.
 - **Date format:** All dates in CSV and JSON files follow `YYYY-MM-DD`.
 - **`risk_flags` column:** A semicolon-separated string (e.g. `"lives_alone;recent_discharge"`). Empty means no flags.
 - **Duplicate contact records:** If a member appears more than once in `last_contacts.csv`, the record with the most recent `last_contact_date` is used, regardless of row order.
