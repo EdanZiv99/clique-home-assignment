@@ -1,18 +1,23 @@
+# Build system configuration — use setuptools to package this project
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+# Project metadata
 [project]
 name = "checkin"
 version = "0.1.0"
 requires-python = ">=3.10"
 
+# Tell setuptools which packages and top-level modules to include
 [tool.setuptools]
 packages = ["checkin_tool"]
 py-modules = ["cli"]
 
+# Optional dependencies — install with: pip install -e ".[dev]"
 [project.optional-dependencies]
 dev = ["pytest"]
 
+# Registers the `checkin` CLI command, pointing to the main() function in cli.py
 [project.scripts]
 checkin = "cli:main"
